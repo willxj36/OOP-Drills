@@ -81,5 +81,55 @@ class Vehicle {
     constructor(mfr, wheels) {
         this.mfr = mfr;
         this.wheels = wheels;
-    }
+    };
+
+    aboutVehicle = () => console.log(`The vehicle was made by ${this.mfr} and has ${this.wheels} wheels.`);
 }
+
+class Truck extends Vehicle {
+    constructor(mfr, wheels, doors, bed) {
+        super(mfr, wheels);
+        this.doors = doors;
+        if(bed === 'yes') {
+            this.type = 'truck';
+        };
+    };
+
+    aboutVehicle = () => console.log(`The vehicle is a ${this.type} with ${this.doors} doors, was made by ${this.mfr}, and has ${this.wheels} wheels.`);
+}
+
+class Sedan extends Vehicle {
+    constructor(mfr, wheels, size, mpg) {
+        super(mfr, wheels);
+        this.size = size;
+        this.mpg = mpg;
+    }
+
+    aboutVehicle = () => console.log(`The vehicle is a ${this.size} sedan which gets ${this.mpg} mpg, was made by ${this.mfr}, and has ${this.wheels} wheels.`);
+}
+
+class Motorcycle extends Vehicle {
+    constructor(mfr, wheels, handlebars, noDoors) {
+        super(mfr, wheels);
+        if(handlebars === 'yes') {
+            this.type = 'motorcycle';
+        };
+        if(noDoors === 'yes') {
+            this.doors = 0;
+        };
+    }
+
+    aboutVehicle = () => console.log(`This vehicle is a ${this.type} with ${this.doors} doors, was made by ${this.mfr}, and has ${this.wheels} wheels.`);
+}
+
+//testing the classes, not part of the tasks in the readme
+
+let car = new Vehicle('Chevy', 4);
+let cbr = new Motorcycle('Honda', 2, 'yes', 'yes');
+let taurus = new Sedan('Ford', 4, 'small', 38);
+let f150 = new Truck('Ford', 4, 4, 'yes');
+
+car.aboutVehicle();
+cbr.aboutVehicle();
+taurus.aboutVehicle();
+f150.aboutVehicle();
